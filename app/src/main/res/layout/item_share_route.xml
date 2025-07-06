@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.routes.SaveRouteData" />
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.saved.SavedRouteClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/bg_saved_locations">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_112sdp"
+            android:layout_margin="@dimen/_8sdp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/place_holder_square"
+            app:setImage="@{data.base_url+data.image}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageThemeRounded16dp" />
+
+        <ImageView
+            android:id="@+id/ivSavedPost"
+            android:layout_width="@dimen/_24sdp"
+            android:layout_height="@dimen/_24sdp"
+            android:src="@drawable/ic_saved_post"
+            android:layout_margin="@dimen/_13sdp"
+            android:visibility="@{data.type==1,default=visible}"
+            app:layout_constraintTop_toTopOf="@id/iv"
+            app:layout_constraintEnd_toEndOf="@id/iv"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/nameLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.name}"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_11ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="@color/primary_color_sky_blue"
+            android:textSize="@dimen/_9ssp"
+            android:text="@{data.description}"
+            app:fontFamily="@font/urbanist_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameLayout" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:textColor="@color/primary_color_sky_blue"
+            android:textSize="@dimen/_9ssp"
+            android:text="@{data.getDateFormat()}"
+            app:fontFamily="@font/urbanist_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+        <ImageView
+            android:id="@+id/ivShare"
+            android:layout_width="@dimen/_49sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:src="@drawable/ic_send_message"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:onClick="@{(view)->listener.onShareClick(data)}"
+            app:layout_constraintTop_toBottomOf="@id/tvDate"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

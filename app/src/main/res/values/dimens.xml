@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="auth_button_height">@dimen/_45sdp</dimen>
+    <dimen name="progressbar_height">@dimen/_35sdp</dimen>
+    <dimen name="bottom_nav__height">@dimen/_72sdp</dimen>
+    <dimen name="bottom_sheet_bottom_margin">@dimen/_60sdp</dimen>
+    <dimen name="margin_top_action_bar">@dimen/_35sdp</dimen>
+    <dimen name="status_bar_padding">@dimen/_20sdp</dimen>
+    <dimen name="status_bar_padding_auth">@dimen/_27sdp</dimen>
+    <dimen name="margin_top_status_bar">@dimen/_16sdp</dimen>
+    <dimen name="margin_bottom__bar">@dimen/_18sdp</dimen>
+    <dimen name="loop_view_height">@dimen/_200sdp</dimen>
+    <dimen name="margin_top_115_sdp">@dimen/_115sdp</dimen>
+</resources>

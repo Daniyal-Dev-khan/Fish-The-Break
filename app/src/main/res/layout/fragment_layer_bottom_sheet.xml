@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cp.fishthebreak.viewModels.map.LayersViewModel" />
+
+        <variable
+            name="mapAdapter"
+            type="com.cp.fishthebreak.adapters.layers.MapStyleAdapter" />
+
+        <variable
+            name="layersAdapter"
+            type="com.cp.fishthebreak.adapters.layers.MapLayersAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:context=".screens.bottom_sheets.LayerBottomSheet">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_rounded_bottom_sheet"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMaps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:text="@string/base_map"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivCross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:src="@drawable/ic_cross_gray"
+                app:layout_constraintBottom_toBottomOf="@id/tvMaps"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvMaps" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMapStyles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/_14sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tvMaps"
+                app:setAdapter="@{mapAdapter}"
+                app:submitList="@{viewModel.mapResponse}"
+                tools:listitem="@layout/item_map" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:background="@color/secondary300"
+                app:layout_constraintTop_toBottomOf="@id/rvMapStyles" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMapLayers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:text="@string/map_layers"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_14ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <Button
+                android:id="@+id/viewAllButton"
+                style="@style/Widget.App.ProfileSaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:text="@string/view_all"
+                app:layout_constraintBottom_toBottomOf="@id/tvMapLayers"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvMapLayers" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_11sdp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/viewAllButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintVertical_bias="0.0"
+                app:setAdapter="@{layersAdapter}"
+                app:submitList="@{viewModel.layerResponse}"
+                tools:listitem="@layout/item_layers" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/noDataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_40sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="@{viewModel.layerResponse.size()==0,default=visible}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/viewAllButton">
+
+                <include
+                    layout="@layout/no_data_found_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/loaderLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/ivProgressBar"
+                    android:layout_width="@dimen/progressbar_height"
+                    android:layout_height="@dimen/progressbar_height"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/color_secondary"
+                    android:indeterminateTintMode="src_atop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

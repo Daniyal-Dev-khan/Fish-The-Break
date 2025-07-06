@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cp.fishthebreak.viewModels.map.OfflineMapViewModel" />
+
+        <variable
+            name="mapAdapter"
+            type="com.cp.fishthebreak.adapters.profile.SelectOfflineMapAdapter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_white_rounded_bottom_sheet"
+        tools:context=".screens.bottom_sheets.OfflineMapBottomSheet">
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.App.ProfileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:text="@string/reset"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:fontFamily="@font/urbanist_semi_bold"
+            android:text="@string/offline_maps"
+            android:textColor="@color/secondary700"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/loadMapButton"
+            style="@style/Widget.App.ProfileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:text="@string/load_map"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/_14sdp"
+            android:paddingBottom="@dimen/_22sdp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:setAdapter="@{mapAdapter}"
+            app:submitList="@{viewModel.offlineMapList}"
+            tools:listitem="@layout/item_select_offline_map" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginVertical="@dimen/_80sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{viewModel.offlineMapList.size()==0,default=visible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <include
+                layout="@layout/no_data_found_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

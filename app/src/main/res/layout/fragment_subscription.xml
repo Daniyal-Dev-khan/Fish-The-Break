@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.fragments.profile.SubscriptionFragment">
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.App.ProfileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:text="@string/back"
+            app:icon="@drawable/ic_back_primary"
+            android:layout_marginTop="@dimen/margin_top_action_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/subscription_membership"
+            android:textSize="@dimen/_19ssp"
+            android:fontFamily="@font/urbanist_bold"
+            android:textColor="@color/secondary800"
+            android:layout_marginTop="@dimen/_14sdp"
+            app:layout_goneMarginTop="@dimen/margin_top_action_bar"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backButton"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/log_in_with_your_data_that_you_entered_during_your_registration"
+            android:textSize="@dimen/_11ssp"
+            android:fontFamily="@font/urbanist_medium"
+            android:textColor="@color/secondary400"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_subscriptions"
+            android:layout_marginTop="@dimen/_18sdp"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constrainedHeight="true"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@id/guide1"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSubscribe"
+            style="@style/Widget.App.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/auth_button_height"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="@string/subscribe"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/_13sdp"
+            app:layout_constraintTop_toBottomOf="@id/rv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonRestoreSubscribe"
+            style="@style/Widget.App.ElevatedButton"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/auth_button_height"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_11sdp"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="@string/restore_subscribe"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/white"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/_13sdp"
+            app:layout_constraintTop_toBottomOf="@id/rv" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.86"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvStartFreeTrial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:text="@string/don_t_want_to_buy"
+            android:textColor="@color/secondary500"
+            android:textSize="@dimen/_11ssp"
+            android:layout_marginBottom="@dimen/_13sdp"
+            app:layout_constraintEnd_toStartOf="@id/btnStartFreeTrial"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginVertical="@dimen/_8sdp"
+            app:layout_constraintBottom_toTopOf="@id/tvStartFreeTrial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescription">
+
+            <include
+                layout="@layout/no_data_found_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/btnStartFreeTrial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:fontFamily="@font/urbanist_bold"
+            android:includeFontPadding="false"
+            android:text="@string/start_free_trial"
+            android:textColor="@color/primary_color_sky_blue"
+            android:textSize="@dimen/_11ssp"
+            app:layout_constraintBottom_toBottomOf="@id/tvStartFreeTrial"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tvStartFreeTrial"
+            app:layout_constraintTop_toTopOf="@id/tvStartFreeTrial" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/loader_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.group.ChatListData" />
+
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.group.OnChatClickListeners" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{data.status == 0, default=gone}"
+            android:layout_marginHorizontal="@dimen/_13sdp"
+            android:background="@drawable/bg_group_invite"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="@dimen/_11sdp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv1"
+                android:layout_width="@dimen/_37sdp"
+                android:layout_height="@dimen/_37sdp"
+                android:layout_marginVertical="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/place_holder_square"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{data.base_url+data.profile_pic}"
+                app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMessage1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_1sdp"
+                android:singleLine="true"
+                android:text="@string/pending_invitation"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_8ssp"
+                app:fontFamily="@font/urbanist_regular"
+                app:layout_constraintBottom_toTopOf="@id/tvName1"
+                app:layout_constraintEnd_toStartOf="@id/ivReject"
+                app:layout_constraintStart_toEndOf="@id/iv1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:singleLine="true"
+                android:text="@{data.name}"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_11ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivReject"
+                app:layout_constraintStart_toEndOf="@id/iv1"
+                app:layout_constraintTop_toBottomOf="@id/tvMessage1" />
+
+            <ImageView
+                android:id="@+id/ivAccept"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:clickable="true"
+                android:focusable="false"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:onClick="@{(view)->listener.onAcceptClick(data)}"
+                android:src="@drawable/ic_accept_request"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivReject"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:clickable="true"
+                android:focusable="false"
+                android:onClick="@{(view)->listener.onRejectClick(data)}"
+                android:src="@drawable/ic_reject_request"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivAccept"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{(view)->listener.onChatClick(data)}">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv"
+                android:layout_width="@dimen/_37sdp"
+                android:layout_height="@dimen/_37sdp"
+                android:layout_marginVertical="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_13sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/place_holder_square"
+                app:layout_constraintBottom_toTopOf="@id/dividerTop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{data.base_url+data.profile_pic}"
+                app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_1sdp"
+                android:singleLine="true"
+                android:text="@{data.name}"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_11ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintBottom_toTopOf="@id/tvMessage"
+                app:layout_constraintEnd_toStartOf="@id/tvTime"
+                app:layout_constraintStart_toEndOf="@id/iv"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:layout_goneMarginBottom="0dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvMessage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_1sdp"
+                android:singleLine="true"
+                android:text="@{data.getLastMessage()}"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_9ssp"
+                android:visibility="@{data.isLastMessageExist(), default=visible}"
+                app:fontFamily="@font/urbanist_regular"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/tvTime"
+                app:layout_constraintStart_toEndOf="@id/iv"
+                app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{data.getLastMessageTime()}"
+                android:textColor="@color/secondary400"
+                android:textSize="@dimen/_9ssp"
+                app:fontFamily="@font/urbanist_regular"
+                android:layout_marginEnd="@dimen/_13sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/dividerTop"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/secondary200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

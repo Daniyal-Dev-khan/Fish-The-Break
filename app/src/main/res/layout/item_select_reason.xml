@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.group.LeaveReasonData" />
+
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.group.OnReasonClickListeners" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view)->listener.onClick(data)}">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.reason}"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/smoky_black"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ivSelect"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivSelect"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:padding="@dimen/_2sdp"
+            android:src="@{data.selected? @drawable/ic_radio_select_user:@drawable/ic_radio_unselect_user, default=@drawable/ic_radio_unselect_user}"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_13sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@color/platinum_divider"
+            app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

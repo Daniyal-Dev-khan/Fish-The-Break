@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.group.ChatListData" />
+
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.group.OnSelectGroupClickListeners" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/_27sdp"
+            android:layout_height="@dimen/_27sdp"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:src="@drawable/place_holder_square"
+            android:layout_marginVertical="@dimen/_9sdp"
+            android:scaleType="centerCrop"
+            app:setImage="@{data.base_url+data.profile_pic}"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{data.name}"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/smoky_black"
+            android:layout_marginHorizontal="@dimen/_7sdp"
+            app:layout_constraintBottom_toBottomOf="@id/iv"
+            app:layout_constraintStart_toEndOf="@id/iv"
+            app:layout_constraintTop_toTopOf="@id/iv"
+            app:layout_constraintEnd_toStartOf="@id/ivSelect"
+            />
+
+        <ImageView
+            android:id="@+id/ivSelect"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:padding="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:src="@{data.selected ? @drawable/ic_radio_select_user: @drawable/ic_radio_unselect_user, default=@drawable/ic_radio_unselect_user}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/platinum_divider"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

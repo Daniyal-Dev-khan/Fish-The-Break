@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cp.fishthebreak.viewModels.saved.SavedFishLogViewModel" />
+
+        <variable
+            name="locationAdapter"
+            type="com.cp.fishthebreak.adapters.saved.SavedFishLogAdapter" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.fragments.log.FishLogFragment">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/pullToRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onRefreshListener="@{() -> viewModel.getAllSavedFishLogs(1)}">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/margin_top_action_bar"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:text="@string/fish_log"
+                    android:textColor="@color/secondary800"
+                    android:textSize="@dimen/_19ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/ivFilter"
+                    android:layout_width="@dimen/_14sdp"
+                    android:layout_height="@dimen/_14sdp"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:src="@drawable/broken_filter"
+                    app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvTitle"
+                    app:tint="@color/secondary400" />
+
+                <ImageView
+                    android:id="@+id/ivAdd"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_13sdp"
+                    android:src="@drawable/ic_add_group"
+                    app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                    app:layout_constraintEnd_toStartOf="@id/ivFilter"
+                    app:layout_constraintTop_toTopOf="@id/tvTitle"
+                    app:tint="@color/secondary400" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvSync"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/syncing"
+                    android:textSize="@dimen/_11ssp"
+                    android:fontFamily="@font/urbanist_medium"
+                    android:textColor="@color/roman_silver"
+                    android:paddingVertical="@dimen/_8sdp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layout_goneMarginTop="@dimen/_11sdp"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/_16sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/paginationLoaderLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSync"
+                    app:setAdapter="@{locationAdapter}"
+                    app:submitList="@{viewModel.list}"
+                    tools:listitem="@layout/item_saved_locations" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/paginationLoaderLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="gone"
+                    android:layout_marginBottom="@dimen/margin_bottom__bar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <include
+                        layout="@layout/pagination_loader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/noDataLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:visibility="@{viewModel.list.size()==0,default=visible}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+                    <include
+                        layout="@layout/no_data_found_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/loader_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

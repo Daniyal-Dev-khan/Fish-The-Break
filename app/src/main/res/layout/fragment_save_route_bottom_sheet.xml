@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.cp.fishthebreak.viewModels.routes.RouteViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:context=".screens.bottom_sheets.routes.SaveRouteBottomSheet">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_bottom_sheet"
+                android:layout_marginBottom="@dimen/_38sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_bottom_cut"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_38sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_123sdp"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_camera_place_holder"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ImageRoundedTheme30dp" />
+
+                    <ImageView
+                        android:id="@+id/ivAddImage"
+                        android:layout_width="@dimen/_34sdp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_marginEnd="@dimen/_22sdp"
+                        android:src="@drawable/ic_capture_image"
+                        app:layout_constraintBottom_toBottomOf="@id/iv"
+                        app:layout_constraintEnd_toEndOf="@id/iv"
+                        app:layout_constraintTop_toBottomOf="@id/iv" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save_route"
+                        app:fontFamily="@font/urbanist_semi_bold"
+                        android:textSize="@dimen/_17ssp"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:textColor="@color/secondary700"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        app:layout_constraintTop_toBottomOf="@id/iv"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/cast_your_line_and_reel_in_the_adventure_with_our_fish_catching_mobile_app"
+                        app:fontFamily="@font/urbanist_medium"
+                        android:textSize="@dimen/_13ssp"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:textColor="@color/secondary400"
+                        android:layout_marginEnd="@dimen/_36sdp"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                        app:layout_constraintStart_toStartOf="parent"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfName"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:hint="@string/name"
+                        app:errorEnabled="@{!model.routeUIStates.nameError}"
+                        app:layout_constraintTop_toBottomOf="@id/tvDescription">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/App_TextInputEditText_Material"
+                            android:text="@{model.routeUIStates.name}"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onNameChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfDescription"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:hint="@string/description"
+                        app:errorEnabled="@{!model.routeUIStates.descriptionError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{model.routeUIStates.description}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onDescriptionChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMeasureDistance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:orientation="vertical"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginHorizontal="@dimen/_14sdp"
+                        android:focusable="false"
+                        tools:listitem="@layout/item_measure_distance"
+                        app:layout_constrainedHeight="true"
+                        app:layout_constraintTop_toBottomOf="@id/tfDescription"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonSave"
+                        style="@style/Widget.App.SaveButtonLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/auth_button_height"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:text="@string/save_route"
+                        android:onClick="@{(view)->model.onSaveClickEvent(view)}"
+                        app:layout_constraintEnd_toStartOf="@id/ivCrossLocation"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rvMeasureDistance" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivCrossLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/ic_cross_location_ripple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:tint="@android:color/transparent"
+                        android:tintMode="src_in"
+                        app:layout_constraintBottom_toBottomOf="@id/buttonSave"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/buttonSave"
+                        app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+                        tools:ignore="ContentDescription" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/loaderLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/ivProgressBar"
+                    android:layout_width="@dimen/progressbar_height"
+                    android:layout_height="@dimen/progressbar_height"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/color_secondary"
+                    android:indeterminateTintMode="src_atop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

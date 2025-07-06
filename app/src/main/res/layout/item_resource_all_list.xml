@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.profile.ResourceData" />
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.profile.ResourceDataClickListener" />
+        <variable
+            name="resourcesAdapter"
+            type="com.cp.fishthebreak.adapters.profile.ResourcesSubAdapter" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingTop="@dimen/_13sdp"
+        android:layout_marginTop="@dimen/_6sdp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.type_name}"
+            android:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_14ssp"
+            android:textColor="@color/yankees_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <Button
+            android:id="@+id/viewAllButton"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/urbanist_semi_bold"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="@string/view_all"
+            android:textColor="@color/secondary400"
+            android:textSize="@dimen/_11ssp"
+            android:onClick="@{(view)->listener.onViewMoreClick(data)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_11sdp"
+            tools:listitem="@layout/item_resource_all_sub_list"
+            android:nestedScrollingEnabled="false"
+            app:setAdapter="@{resourcesAdapter}"
+            app:submitList="@{data.resources}"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

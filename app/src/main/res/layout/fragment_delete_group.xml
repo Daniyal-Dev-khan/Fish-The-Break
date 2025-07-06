@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="groupData"
+            type="com.cp.fishthebreak.models.group.ChatListData" />
+
+        <variable
+            name="model"
+            type="com.cp.fishthebreak.viewModels.group.update.DeleteGroupViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_primary"
+        tools:context=".screens.fragments.group.DeleteGroupFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="@dimen/_96sdp"
+                android:layout_height="@dimen/_96sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_group_place_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{groupData.base_url+groupData.profile_pic}"
+                app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/remove_group"
+                android:gravity="center"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:textSize="@dimen/_16ssp"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_21sdp"
+                app:layout_constraintTop_toBottomOf="@id/ivProfile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/the_group_will_be_removed_for_all_friends"
+                android:gravity="center"
+                android:fontFamily="@font/urbanist_regular"
+                android:textSize="@dimen/_11ssp"
+                android:layout_marginHorizontal="@dimen/_27sdp"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonLeave"
+                style="@style/Widget.App.SaveButtonRed"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/auth_button_height"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:text="@string/yes_leave_remove_group"
+                android:onClick="@{(view)->model.leaveGroup(groupData.id)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonCancel"
+                style="@style/Widget.App.SaveButtonWhite"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/auth_button_height"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/cancel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonLeave" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/loader_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

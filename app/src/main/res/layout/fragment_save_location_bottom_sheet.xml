@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="com.cp.fishthebreak.viewModels.profile.locations.LocationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:context=".screens.bottom_sheets.locations.SaveLocationBottomSheet">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/bottom_sheet_bottom_margin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_bottom_sheet"
+                android:layout_marginBottom="@dimen/_38sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_bottom_cut"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_38sdp"
+                android:layout_marginTop="@dimen/_11sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/iv"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_123sdp"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_camera_place_holder"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shapeAppearanceOverlay="@style/ImageRoundedTheme30dp" />
+
+                    <ImageView
+                        android:id="@+id/ivAddImage"
+                        android:layout_width="@dimen/_34sdp"
+                        android:layout_height="@dimen/_34sdp"
+                        android:layout_marginEnd="@dimen/_22sdp"
+                        android:src="@drawable/ic_capture_image"
+                        app:layout_constraintBottom_toBottomOf="@id/iv"
+                        app:layout_constraintEnd_toEndOf="@id/iv"
+                        app:layout_constraintTop_toBottomOf="@id/iv" />
+                    <!--                style="?attr/textInputFilledStyle"-->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfName"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:hint="@string/location_name"
+                        app:errorEnabled="@{!model.locationUIStates.nameError}"
+                        app:layout_constraintTop_toBottomOf="@id/ivAddImage">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{model.locationUIStates.name}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onNameChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfLat"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:hint="@string/lat"
+                        app:errorEnabled="@{!model.locationUIStates.latError}"
+                        app:layout_constraintEnd_toStartOf="@id/tfLang"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfName">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLat"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@{model.locationUIStates.latFormat}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onLatFormatChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfLang"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:hint="@string/lang"
+                        app:errorEnabled="@{!model.locationUIStates.langError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tfLat"
+                        app:layout_constraintTop_toTopOf="@id/tfLat">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLang"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:text="@{model.locationUIStates.langFormat}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onLangFormatChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfDate"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:hint="@string/date_"
+                        app:errorEnabled="@{!model.locationUIStates.dateError}"
+                        app:layout_constraintEnd_toStartOf="@id/tfTime"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfLat">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDate"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{model.locationUIStates.date}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onDateChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfTime"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:hint="@string/time_"
+                        app:errorEnabled="@{!model.locationUIStates.timeError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tfDate"
+                        app:layout_constraintTop_toTopOf="@id/tfDate">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etTime"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{model.locationUIStates.time}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onTimeChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfWeight"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:hint="@string/weight_lb"
+                        app:errorEnabled="@{!model.locationUIStates.weightError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfDate">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etWeight"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="numberDecimal"
+                            android:text="@{model.locationUIStates.weight}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onWeightChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfLengthFeet"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:hint="@string/length_ft"
+                        app:errorEnabled="@{!model.locationUIStates.lengthError}"
+                        app:layout_constraintEnd_toStartOf="@id/tfLengthInches"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfWeight">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLengthFeet"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="@{model.locationUIStates.length}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onLengthChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfLengthInches"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:hint="@string/length_in"
+                        app:errorEnabled="@{!model.locationUIStates.lengthInchesError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tfLengthFeet"
+                        app:layout_constraintTop_toTopOf="@id/tfLengthFeet">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLengthInches"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:text="@{model.locationUIStates.lengthInches}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onLengthInchesChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tfDescription"
+                        style="@style/App_TextInputLayout_Material"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:hint="@string/description"
+                        app:errorEnabled="@{!model.locationUIStates.descriptionError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfLengthFeet">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDescription"
+                            style="@style/App_TextInputEditText_Material"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{model.locationUIStates.description}"
+                            android:onTextChanged="@{(text, start, before, count) -> model.onDescriptionChangeEvent(text)}"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:fontFamily="@font/urbanist_regular"
+                        android:text="@string/save_as"
+                        android:textColor="@color/secondary400"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tfDescription" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_11sdp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvSave">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbLocation"
+                            style="@style/App_RadioButton.Theme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="@string/location" />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/rbFishlog"
+                            style="@style/App_RadioButton.Theme"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_37sdp"
+                            android:text="@string/fish_log" />
+
+                    </RadioGroup>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/buttonSave"
+                        style="@style/Widget.App.SaveButtonLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/auth_button_height"
+                        android:layout_marginHorizontal="@dimen/_11sdp"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:text="@string/save_location"
+                        android:onClick="@{(view)->model.onSaveClickEvent(view)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/ivCrossLocation"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivCrossLocation"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginEnd="@dimen/_11sdp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/ic_cross_location_ripple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:tint="@android:color/transparent"
+                        android:tintMode="src_in"
+                        app:layout_constraintBottom_toBottomOf="@id/buttonSave"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/buttonSave"
+                        app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+                        tools:ignore="ContentDescription" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/loaderLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ProgressBar
+                    android:id="@+id/ivProgressBar"
+                    android:layout_width="@dimen/progressbar_height"
+                    android:layout_height="@dimen/progressbar_height"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/color_secondary"
+                    android:indeterminateTintMode="src_atop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

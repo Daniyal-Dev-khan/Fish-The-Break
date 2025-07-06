@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        tools:context=".screens.bottom_sheets.locations.LatLangBottomSheet">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_rounded_bottom_sheet"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/backButton"
+                style="@style/Widget.App.ProfileBackButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top_status_bar"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/saveButton"
+                style="@style/Widget.App.ProfileSaveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:text="@string/done"
+                app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+            <com.cp.fishthebreak.utils.loopView.LoopView
+                android:id="@+id/degreeView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loop_view_height"
+                android:layout_marginStart="@dimen/_14sdp"
+                android:layout_marginTop="@dimen/_13sdp"
+                app:awv_textsize="22"
+                app:awv_isLoop="false"
+                app:layout_constraintEnd_toStartOf="@id/minutesView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+            <com.cp.fishthebreak.utils.loopView.LoopView
+                android:id="@+id/minutesView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loop_view_height"
+                app:awv_textsize="22"
+                app:awv_isLoop="false"
+                app:layout_constraintEnd_toStartOf="@id/secondsView"
+                app:layout_constraintStart_toEndOf="@id/degreeView"
+                app:layout_constraintTop_toTopOf="@id/degreeView" />
+
+            <com.cp.fishthebreak.utils.loopView.LoopView
+                android:id="@+id/secondsView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loop_view_height"
+                app:awv_textsize="22"
+                app:awv_isLoop="false"
+                app:layout_constraintEnd_toStartOf="@id/directionView"
+                app:layout_constraintStart_toEndOf="@id/minutesView"
+                app:layout_constraintTop_toTopOf="@id/degreeView" />
+
+            <com.cp.fishthebreak.utils.loopView.LoopView
+                android:id="@+id/directionView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/loop_view_height"
+                app:awv_textsize="22"
+                app:awv_isLoop="false"
+                android:layout_marginEnd="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/secondsView"
+                app:layout_constraintTop_toTopOf="@id/degreeView" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

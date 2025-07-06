@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.cp.fishthebreak.viewModels.profile.resources.ResourcesViewModel" />
+
+        <variable
+            name="resourcesAdapter"
+            type="com.cp.fishthebreak.adapters.profile.ResourcesAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.fragments.profile.ArticlesFragment">
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.App.ProfileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            app:icon="@drawable/ic_back_primary"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/margin_top_action_bar"
+            android:fontFamily="@font/urbanist_medium"
+            android:text="@string/articles"
+            android:textColor="@color/secondary800"
+            android:textSize="@dimen/_19ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/featuredLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/bg_resource_boarder_stick"
+            android:paddingBottom="@dimen/_11sdp"
+            app:setVisibility="@{viewModel.resourcesResponse.data.data.featured_resource}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle">
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="@dimen/_37sdp"
+                android:layout_height="@dimen/_37sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:src="@drawable/ic_doc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:layout_width="@dimen/_29sdp"
+                android:layout_height="@dimen/_4sdp"
+                android:layout_marginTop="@dimen/_23sdp"
+                android:background="@drawable/bg_bright_gray_rounded"
+                app:layout_constraintCircleRadius="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_26sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvFeaturedTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_29sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:text="@{viewModel.resourcesResponse.data.data.featured_resource.title}"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvFeaturedDescriptions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:layout_marginEnd="@dimen/_29sdp"
+                android:fontFamily="@font/urbanist_regular"
+                android:text="@{viewModel.resourcesResponse.data.data.featured_resource.short_description}"
+                android:textColor="@color/shadow_blue"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvFeaturedTitle" />
+
+            <Button
+                android:id="@+id/readMoreButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="@string/read_more"
+                android:textColor="@color/primary_color_celestial_blue"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvFeaturedDescriptions" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_beginner_stick"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:setVisibility="@{viewModel.resourcesResponse.data.data.featured_resource}"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.resourcesResponse.data.data.featured_resource.resource_type_name}"
+                android:textColor="@color/white"
+                android:fontFamily="@font/urbanist_medium"
+                android:textSize="@dimen/_8ssp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_13sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvArticle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_resource_all_list"
+            app:setAdapter="@{resourcesAdapter}"
+            app:submitList="@{viewModel.resourcesResponse.data.data.resources}"
+            app:layout_constraintTop_toBottomOf="@id/featuredLayout"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/stickyHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingTop="@dimen/_19sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/rvArticle">
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvStickyHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:textSize="@dimen/_14ssp"
+                android:textColor="@color/yankees_blue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                android:id="@+id/viewAllButton1"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="@string/view_all"
+                android:textColor="@color/secondary400"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/tvStickyHeader"
+                app:layout_constraintTop_toTopOf="@id/tvStickyHeader" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{viewModel.resourcesResponse.data.data.resources.size()==0,default=visible}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/featuredLayout">
+
+            <include
+                layout="@layout/no_data_found_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/loader_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

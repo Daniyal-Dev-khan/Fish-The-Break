@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="groupData"
+            type="com.cp.fishthebreak.models.group.ChatListData" />
+
+        <variable
+            name="model"
+            type="com.cp.fishthebreak.viewModels.group.update.GroupInfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.fragments.group.GroupInfoFragment">
+
+<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--            android:id="@+id/pullToRefresh"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            app:onRefreshListener="@{() -> model.loadData()}">-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:id="@+id/backButton"
+                    style="@style/Widget.App.ProfileBackButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_14sdp"
+                    app:icon="@drawable/ic_back_primary"
+                    app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_top_action_bar"
+                    android:fontFamily="@font/urbanist_semi_bold"
+                    android:text="@string/edit_group"
+                    android:textColor="@color/secondary700"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/saveButton"
+                    style="@style/Widget.App.ProfileSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:onClick="@{(view)->model.onSaveClickEvent(view)}"
+                    android:text="@string/save"
+                    app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    app:dividerColor="@color/secondary200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+                <Button
+                    android:id="@+id/addMembersButton"
+                    style="@style/Widget.App.ProfileSaveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:text="@string/add_members"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_99sdp"
+                    android:layout_height="@dimen/_99sdp"
+                    android:layout_marginTop="@dimen/_22sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_group_place_holder"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider"
+                    app:setImage="@{groupData.base_url+model.groupInfoUIStates.image}"
+                    app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivAdd"
+                    android:layout_width="@dimen/_26sdp"
+                    android:layout_height="@dimen/_26sdp"
+                    android:src="@drawable/iv_capture"
+                    app:layout_constraintBottom_toBottomOf="@id/ivProfile"
+                    app:layout_constraintEnd_toEndOf="@id/ivProfile"
+                    app:layout_constraintStart_toStartOf="@id/ivProfile"
+                    app:layout_constraintTop_toBottomOf="@id/ivProfile"
+                    app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/nameLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:background="@{model.groupInfoUIStates.nameError ? @drawable/bg_alice_blue_rounded_group : @drawable/bg_alice_blue_rounded_group_error, default=@drawable/bg_alice_blue_rounded_group}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/ivAdd">
+
+                    <EditText
+                        android:id="@+id/etName"
+                        style="@style/App_EditTextStyle_Auth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="emailAddress"
+                        android:fontFamily="@font/urbanist_medium"
+                        android:hint="@string/group_name"
+                        android:inputType="textCapWords"
+                        android:onTextChanged="@{(text, start, before, count) -> model.onNameChangeEvent(text)}"
+                        android:paddingHorizontal="@dimen/_13sdp"
+                        android:paddingVertical="@dimen/_10sdp"
+                        android:text="@{model.groupInfoUIStates.name}"
+                        android:textColor="@color/secondary700"
+                        android:textColorHint="@color/color_secondary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvNameError"
+                    style="@style/App_MaterialTextStyle_Error"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="@string/error_invalid_group_name"
+                    android:visibility="@{!model.groupInfoUIStates.nameError, default=gone}"
+                    app:layout_constraintEnd_toEndOf="@id/nameLayout"
+                    app:layout_constraintStart_toStartOf="@id/nameLayout"
+                    app:layout_constraintTop_toBottomOf="@id/nameLayout" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:id="@+id/divider1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_4sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    app:dividerColor="@color/alice_blue"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvNameError" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvUserList"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1"
+                    tools:listitem="@layout/item_group_user" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/noDataLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:visibility="@{model.list.size()==0,default=visible}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider1">
+
+                    <include
+                        layout="@layout/no_data_found_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/loader_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.fragments.home.SearchLatLangFragment">
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.App.ProfileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:text="@string/profile"
+            android:layout_marginTop="@dimen/margin_top_action_bar"
+            app:icon="@drawable/ic_back_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLat"
+            style="@style/App_Auth_MaterialTextStyle_Field_Titles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:text="@string/latitude_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/backButton" />
+
+        <EditText
+            android:id="@+id/etLat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/select_latitude"
+            android:textColor="@color/smoky_black"
+            android:textSize="@dimen/_11ssp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:fontFamily="@font/urbanist_regular"
+            android:background="@android:color/transparent"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvLat"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_2sdp"
+            app:dividerColor="@color/secondary200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etLat" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLang"
+            style="@style/App_Auth_MaterialTextStyle_Field_Titles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_28sdp"
+            android:text="@string/longitude_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider" />
+
+        <EditText
+            android:id="@+id/etLang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/select_longitude"
+            android:textColor="@color/smoky_black"
+            android:textSize="@dimen/_11ssp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_8sdp"
+            android:fontFamily="@font/urbanist_regular"
+            android:background="@android:color/transparent"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvLang"/>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider1"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_2sdp"
+            app:dividerColor="@color/secondary200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etLang" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSave"
+            style="@style/Widget.App.ElevatedButtonSettings"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/auth_button_height"
+            android:layout_marginHorizontal="@dimen/_11sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:text="@string/search_"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

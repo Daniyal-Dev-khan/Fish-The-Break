@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.map.MapStyle" />
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.layers.MapStyleListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_13sdp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/_57sdp"
+            android:layout_height="@dimen/_56sdp"
+            app:shapeAppearanceOverlay="@style/ImageThemeRounded13dp"
+            android:src="@drawable/place_holder_square"
+            app:strokeWidth="@dimen/_2sdp"
+            android:padding="@dimen/_1sdp"
+            android:scaleType="centerCrop"
+            app:strokeColor="@{data.isSelected ? @color/primary_color_celestial_blue : @android:color/transparent}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/urbanist_medium"
+            android:textSize="@dimen/_9ssp"
+            android:text="@{data.name}"
+            android:textColor="@{data.isSelected ? @color/primary_color_celestial_blue : @color/secondary500}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

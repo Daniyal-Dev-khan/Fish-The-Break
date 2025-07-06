@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivLineAddDestinationTop"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_destination_lines"
+            app:layout_constraintStart_toStartOf="@id/ivRadioDestination"
+            app:layout_constraintEnd_toEndOf="@id/ivRadioDestination"
+            app:layout_constraintBottom_toTopOf="@id/ivRadioDestination"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivRadioDestination"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_radio_destination"
+            android:layout_marginStart="@dimen/_14sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/layoutAddDestination"
+            app:layout_constraintBottom_toBottomOf="@id/layoutAddDestination" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutAddDestination"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_add_destination"
+            android:paddingStart="@dimen/_9sdp"
+            android:paddingEnd="0dp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:clickable="true"
+            android:focusable="false"
+            app:layout_constraintStart_toEndOf="@id/ivRadioDestination"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvAddDestination"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/choose_point_on_map"
+                android:fontFamily="@font/urbanist_regular"
+                android:textSize="@dimen/_9ssp"
+                android:paddingVertical="@dimen/_10sdp"
+                android:textColorHint="@color/secondary400"
+                app:layout_constraintEnd_toStartOf="@id/ivCross"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <ImageView
+                android:id="@+id/ivCross"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="false"
+                android:padding="@dimen/_3sdp"
+                android:src="@drawable/ic_search_route"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/ivLineAddDestinationBottom"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_destination_lines"
+            app:layout_constraintStart_toStartOf="@id/ivRadioDestination"
+            app:layout_constraintEnd_toEndOf="@id/ivRadioDestination"
+            app:layout_constraintTop_toBottomOf="@id/ivRadioDestination"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

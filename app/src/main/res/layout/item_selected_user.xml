@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.auth.User" />
+
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.group.OnFindUserClickListeners" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_8sdp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:layout_marginTop="@dimen/_1sdp"
+            android:src="@drawable/place_holder_square"
+            android:scaleType="centerCrop"
+            app:setImage="@{data.base_url+data.profile_pic}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivCross"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:src="@drawable/ic_cross_user"
+            android:onClick="@{(view)->listener.onCrossClick(data)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

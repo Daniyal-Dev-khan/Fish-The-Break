@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.activities.OnBoardingActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/onBoardLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_31sdp"
+            app:layout_constraintBottom_toTopOf="@id/buttonNext"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivCover"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_27sdp"
+                android:scaleType="fitXY"
+                android:alpha="0"
+                android:src="@drawable/on_board_1"
+                app:layout_constraintBottom_toTopOf="@id/tvTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/ivCover1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/_27sdp"
+                android:scaleType="fitXY"
+                android:alpha="0"
+                android:src="@drawable/on_board_1"
+                app:layout_constraintBottom_toTopOf="@id/tvTitle"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <Button
+                android:id="@+id/skipButton"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:text="@string/skip"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:fontFamily="@font/urbanist_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginBottom="@dimen/_9sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:gravity="center"
+                android:alpha="0"
+                android:text="@string/on_board_1_title"
+                android:textColor="@color/secondary800"
+                android:textSize="@dimen/_19ssp"
+                app:layout_constraintBottom_toTopOf="@id/tvDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:fontFamily="@font/urbanist_medium"
+                android:gravity="center"
+                android:alpha="0"
+                android:text="@string/on_board_1_description"
+                android:textColor="@color/secondary400"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toTopOf="@id/dotLayout" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTitle1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginBottom="@dimen/_9sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:gravity="center"
+                android:alpha="0"
+                android:text="@string/on_board_1_title"
+                android:textColor="@color/secondary800"
+                android:textSize="@dimen/_19ssp"
+                app:layout_constraintBottom_toTopOf="@id/tvDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDescription1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_18sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:fontFamily="@font/urbanist_medium"
+                android:gravity="center"
+                android:alpha="0"
+                android:text="@string/on_board_1_description"
+                android:textColor="@color/secondary400"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintBottom_toTopOf="@id/dotLayout" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/dotLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivDot1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/active_onboard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/ivDot2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:src="@drawable/un_active_onboard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivDot1"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+                <ImageView
+                    android:id="@+id/ivDot3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:src="@drawable/un_active_onboard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/ivDot2"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonNext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/auth_button_height"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:fontFamily="@font/urbanist_bold"
+            android:text="@string/btn_next"
+            android:textSize="@dimen/_13ssp"
+            style="@style/Widget.App.ElevatedButton"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

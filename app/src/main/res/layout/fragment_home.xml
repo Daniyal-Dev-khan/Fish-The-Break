@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bright_gray"
+        tools:context=".screens.fragments.home.HomeFragment">
+
+        <com.esri.arcgisruntime.mapping.view.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutSearch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/margin_top_action_bar"
+            android:background="@drawable/bd_search_home"
+            android:elevation="@dimen/_6sdp"
+            android:paddingStart="@dimen/_11sdp"
+            android:paddingEnd="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:src="@drawable/ic_search_gray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_7sdp"
+                android:background="@android:color/transparent"
+                android:ellipsize="end"
+                android:fontFamily="@font/urbanist_regular"
+                android:hint="@string/search_fishing_spots"
+                android:singleLine="true"
+                android:textColor="@color/secondary700"
+                android:textColorHint="@color/secondary400"
+                android:textSize="@dimen/_11ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivClearSearch"
+                app:layout_constraintStart_toEndOf="@id/ivSearch"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivClearSearch"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="@dimen/_9sdp"
+                android:src="@drawable/ic_cross_gray"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutMeasureDistanceList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_9sdp"
+            android:background="@drawable/bg_measure_list"
+            android:paddingVertical="@dimen/_11sdp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toStartOf="@id/guide1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvTotalDistance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:textColor="@color/secondary800"
+                android:textSize="@dimen/_9ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivExpand"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_19sdp"
+                android:layout_marginEnd="@dimen/_14sdp"
+                android:paddingHorizontal="@dimen/_8sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                android:src="@drawable/ic_arrow_up"
+                app:layout_constraintBottom_toBottomOf="@id/tvTotalDistance"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvTotalDistance" />
+
+            <net.cachapa.expandablelayout.ExpandableLayout
+                android:id="@+id/expandable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                app:el_duration="500"
+                app:el_expanded="true"
+                app:el_parallax="0.5"
+                app:layout_constraintTop_toBottomOf="@id/tvTotalDistance">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/_6sdp">
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@color/secondary400_alpha16"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMeasureDistance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_17sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constrainedHeight="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHeight_max="@dimen/_150sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider"
+                        tools:listitem="@layout/item_measure_distance" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </net.cachapa.expandablelayout.ExpandableLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivLayers"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_layer_ripple"
+            android:clickable="true"
+            android:elevation="@dimen/_6sdp"
+            android:focusable="true"
+            android:src="@drawable/ic_layers_home"
+            android:tint="@android:color/transparent"
+            android:tintMode="src_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivCurrentLocation"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_share_ripple"
+            android:clickable="true"
+            android:elevation="@dimen/_6sdp"
+            android:focusable="true"
+            android:src="@drawable/ic_share_home"
+            android:tint="@android:color/transparent"
+            android:tintMode="src_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivLayers"
+            app:layout_goneMarginTop="@dimen/_16sdp"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivOfflineMap"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_toggle_map"
+            android:clickable="true"
+            android:elevation="@dimen/_6sdp"
+            android:focusable="true"
+            android:src="@drawable/ic_toggle_map"
+            android:tint="@android:color/transparent"
+            android:tintMode="src_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCurrentLocation"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/dimBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/secondary900_alpha50"
+            android:visibility="gone" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivPlus"
+            android:layout_width="@dimen/_44sdp"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:layout_marginBottom="@dimen/_22sdp"
+            android:src="@drawable/ic_add_home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivTrolling"
+            android:layout_width="@dimen/_39sdp"
+            android:layout_height="@dimen/_39sdp"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_trolling_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_trolling_home"
+            android:tint="@android:color/transparent"
+            android:tintMode="src_in"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/ivPlus"
+            app:layout_constraintEnd_toEndOf="@id/ivPlus"
+            app:layout_constraintStart_toStartOf="@id/ivPlus"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvIvTrolling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:fontFamily="@font/urbanist_medium"
+            android:text="@string/start_trolling"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/ivTrolling"
+            app:layout_constraintEnd_toStartOf="@id/ivTrolling"
+            app:layout_constraintTop_toTopOf="@id/ivTrolling" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivSaveLocations"
+            android:layout_width="@dimen/_39sdp"
+            android:layout_height="@dimen/_39sdp"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_locations_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_save_location_home"
+            android:tint="@android:color/transparent"
+            android:tintMode="src_in"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/ivTrolling"
+            app:layout_constraintEnd_toEndOf="@id/ivPlus"
+            app:layout_constraintStart_toStartOf="@id/ivPlus"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvIvSaveLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:fontFamily="@font/urbanist_medium"
+            android:text="@string/save_location"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/ivSaveLocations"
+            app:layout_constraintEnd_toStartOf="@id/ivSaveLocations"
+            app:layout_constraintTop_toTopOf="@id/ivSaveLocations" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivDistance"
+            android:layout_width="@dimen/_39sdp"
+            android:layout_height="@dimen/_39sdp"
+            android:layout_marginBottom="@dimen/_13sdp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/ic_distance_ripple"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_measure_distance_home"
+            android:tint="@android:color/transparent"
+            android:tintMode="src_in"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/ivSaveLocations"
+            app:layout_constraintEnd_toEndOf="@id/ivPlus"
+            app:layout_constraintStart_toStartOf="@id/ivPlus"
+            app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvIvMeasure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:fontFamily="@font/urbanist_medium"
+            android:text="@string/measure_distance"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13ssp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/ivDistance"
+            app:layout_constraintEnd_toStartOf="@id/ivDistance"
+            app:layout_constraintTop_toTopOf="@id/ivDistance" />
+
+        <LinearLayout
+            android:id="@+id/layoutLatLong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_13sdp"
+            android:background="@drawable/bg_measure_list"
+            android:clickable="true"
+            android:elevation="@dimen/_7sdp"
+            android:focusable="true"
+            android:minWidth="@dimen/_80sdp"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/_10sdp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/layoutBottomView"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLatitudeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_9sdp"
+                android:text="Latitude"
+                android:textColor="@color/secondary600"
+                android:textSize="@dimen/_8ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLatitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:singleLine="true"
+                android:text="0.0"
+                android:textColor="@color/primary_color_sky_blue"
+                android:textSize="@dimen/_7ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLatitudeTitle" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLongitudeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="Longitude"
+                android:textColor="@color/secondary600"
+                android:textSize="@dimen/_8ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLatitude" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLongitude"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_9sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:singleLine="true"
+                android:text="0.0"
+                android:textColor="@color/primary_color_sky_blue"
+                android:textSize="@dimen/_7ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvLongitudeTitle" />
+
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutBottomView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/_22sdp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonSaveLocation"
+                    style="@style/Widget.App.ElevatedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/auth_button_height"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:elevation="0dp"
+                    android:fontFamily="@font/urbanist_bold"
+                    android:text="@string/next"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/ivCrossLocation"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivCrossLocation"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/ic_cross_location_ripple"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@android:color/transparent"
+                    android:tintMode="src_in"
+                    app:layout_constraintBottom_toBottomOf="@id/buttonSaveLocation"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/buttonSaveLocation"
+                    app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+                    tools:ignore="ContentDescription" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutTrolling"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@drawable/bg_trolling_time"
+                    app:layout_constraintBottom_toTopOf="@id/ivCrossTrolling"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTrollingTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:fontFamily="@font/urbanist_semi_bold"
+                        android:text="@string/_00_00"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivStartStopTrolling"
+                        android:layout_width="@dimen/_44sdp"
+                        android:layout_height="@dimen/_44sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:src="@drawable/ic_pause_trolling"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTrollingTime" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivCrossTrolling"
+                    android:layout_width="@dimen/_44sdp"
+                    android:layout_height="@dimen/_44sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/ic_cross_location_ripple"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@android:color/transparent"
+                    android:tintMode="src_in"
+                    app:layout_constraintBottom_toTopOf="@id/saveTrollingBtn"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+                    tools:ignore="ContentDescription" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/bottomLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivBottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/trolling_bg_cut"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/savePointBtn"
+                        android:layout_width="@dimen/_37sdp"
+                        android:layout_height="@dimen/_37sdp"
+                        android:layout_marginStart="@dimen/_31sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:src="@drawable/ic_save_flag"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/saveFishLogBtn"
+                        android:layout_width="@dimen/_37sdp"
+                        android:layout_height="@dimen/_37sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:src="@drawable/ic_save_fish_trolling"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/saveTrollingBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_save_trolling"
+                    android:fontFamily="@font/urbanist_semi_bold"
+                    android:paddingHorizontal="@dimen/_28sdp"
+                    android:paddingVertical="@dimen/_14sdp"
+                    android:text="@string/save_trolling"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toTopOf="@id/bottomLayout"
+                    app:layout_constraintEnd_toEndOf="@id/bottomLayout"
+                    app:layout_constraintStart_toStartOf="@id/bottomLayout"
+                    app:layout_constraintTop_toTopOf="@id/bottomLayout" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutMeasureDistance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:id="@+id/ivMeasureDistanceBottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/trolling_bg_cut"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/backMeasureDistanceBtn"
+                        android:layout_width="@dimen/_37sdp"
+                        android:layout_height="@dimen/_37sdp"
+                        android:layout_marginStart="@dimen/_31sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:src="@drawable/arrow_back_route"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/deleteMeasureDistanceBtn"
+                        android:layout_width="@dimen/_37sdp"
+                        android:layout_height="@dimen/_37sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
+                        android:padding="@dimen/_8sdp"
+                        android:src="@drawable/ic_trash_route"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/saveRouteBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_save_trolling"
+                    android:fontFamily="@font/urbanist_semi_bold"
+                    android:paddingHorizontal="@dimen/_28sdp"
+                    android:paddingVertical="@dimen/_14sdp"
+                    android:text="@string/save_route"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_13ssp"
+                    app:layout_constraintBottom_toTopOf="@id/layoutRoute"
+                    app:layout_constraintEnd_toEndOf="@id/layoutRoute"
+                    app:layout_constraintStart_toStartOf="@id/layoutRoute"
+                    app:layout_constraintTop_toTopOf="@id/layoutRoute" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutMeasureDistanceInitial"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_255sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutRouteInitial"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/_38sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_bottom_sheet"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivMeasureDistanceBottomInitial"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_bottom_cut"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <Button
+                        android:id="@+id/backButtonLibrary"
+                        style="@style/Widget.App.ProfileBackButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_14sdp"
+                        app:icon="@drawable/ic_back_primary"
+                        app:layout_constraintBottom_toBottomOf="@id/tvTitleLibrary"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvTitleLibrary" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvTitleLibrary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:fontFamily="@font/urbanist_semi_bold"
+                        android:text="@string/select_library"
+                        android:textColor="@color/secondary700"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/nextButtonLibrary"
+                        style="@style/Widget.App.ProfileSaveButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_14sdp"
+                        android:text="@string/next"
+                        app:layout_constraintBottom_toBottomOf="@id/tvTitleLibrary"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/tvTitleLibrary" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvDestinations"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/_8sdp"
+                        android:clipToPadding="false"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/_7sdp"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constrainedHeight="true"
+                        app:layout_constraintBottom_toTopOf="@id/btnAddDestination"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTitleLibrary"
+                        tools:listitem="@layout/item_add_destination" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddDestination"
+                        style="@style/Widget.App.ElevatedButtonIcon"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_14sdp"
+                        android:layout_marginBottom="@dimen/_40sdp"
+                        android:text="@string/add_destination_"
+                        app:icon="@drawable/ic_add_destination"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutViewSearchDetails"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:clickable="true"
+                android:focusable="false"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutViewSearchDetailsInner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_14sdp"
+                    android:clickable="true"
+                    android:focusable="false"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="@dimen/_38sdp"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_bottom_sheet"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivPointDetailsBg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/bg_bottom_cut"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvPointTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_21sdp"
+                        android:fontFamily="@font/urbanist_semi_bold"
+                        android:textColor="@color/secondary700"
+                        android:textSize="@dimen/_13ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvPointDetails"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:fontFamily="@font/urbanist_medium"
+                        android:textColor="@color/secondary400"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPointTitle" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvPointLatLang"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/_14sdp"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginBottom="@dimen/_40sdp"
+                        android:fontFamily="@font/urbanist_semi_bold"
+                        android:textColor="@color/primary_color_sky_blue"
+                        android:textSize="@dimen/_11ssp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvPointDetails" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivCrossPointDetails"
+                    android:layout_width="@dimen/_39sdp"
+                    android:layout_height="@dimen/_39sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/ic_cross_location_ripple"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="@android:color/transparent"
+                    android:tintMode="src_in"
+                    app:layout_constraintBottom_toTopOf="@id/layoutViewSearchDetailsInner"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="@id/layoutViewSearchDetailsInner"
+                    app:layout_constraintTop_toTopOf="@id/layoutViewSearchDetailsInner"
+                    app:shapeAppearanceOverlay="@style/ImageCircleTheme"
+                    tools:ignore="ContentDescription" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:elevation="@dimen/_10sdp"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/ivProgressBar"
+                android:layout_width="@dimen/progressbar_height"
+                android:layout_height="@dimen/progressbar_height"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/color_secondary"
+                android:indeterminateTintMode="src_atop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/locationPermissionLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:elevation="@dimen/_10sdp"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/locationPermissionButton"
+                style="@style/Widget.App.ElevatedButton"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/auth_button_height"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:fontFamily="@font/urbanist_semi_bold"
+                android:text="@string/give_location_peermissions"
+                android:textSize="@dimen/_9ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,540 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FishTheBreak" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+
+        <item name="colorError">#D7425F</item>
+        <item name="colorOnError">#FFFFFF</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
+
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+        <!-- Optional: set the status bar light and content dark. -->
+        <item name="android:windowLightStatusBar">
+            false
+        </item>
+        <item name="android:navigationBarColor">
+            @android:color/transparent
+        </item>
+    </style>
+
+    <style name="Theme.FishTheBreak" parent="Base.Theme.FishTheBreak" />
+
+    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.CheckBox</item>
+    </style>
+
+    <style name="ThemeOverlay.App.CheckBox" parent="">
+        <!-- Container colors -->
+        <item name="colorOnSurface">@color/maximum_blue_green</item>
+        <item name="colorPrimary">@color/maximum_blue_green</item>
+    </style>
+
+    <style name="Widget.App.ElevatedButton" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ElevatedButton</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">@dimen/_5sdp</item>
+        <item name="android:translationZ">@dimen/_1sdp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ElevatedButton" parent="">
+        <item name="colorContainer">@color/color_primary</item>
+        <item name="colorOnContainer">@color/white</item>
+    </style>
+
+    <style name="Widget.App.Button" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.Button" parent="">
+        <item name="colorContainer">@color/color_primary</item>
+        <item name="colorOnContainer">@color/white</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+    </style>
+
+    <style name="Widget.App.ElevatedButtonSettings" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ElevatedButtonSettings</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ElevatedButtonSettings" parent="">
+        <item name="colorContainer">@color/color_primary</item>
+        <item name="colorOnContainer">@color/white</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:fontFamily">@font/urbanist_semi_bold</item>
+    </style>
+
+    <style name="Widget.App.ElevatedButtonCancel" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ElevatedButtonCancel</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ElevatedButtonCancel" parent="">
+        <item name="colorContainer">@color/error600_alpha11</item>
+        <item name="colorOnContainer">@color/error600</item>
+    </style>
+
+    <style name="Widget.App.ElevatedButtonWhite" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ElevatedButtonWhite</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">@dimen/_5sdp</item>
+        <item name="android:translationZ">@dimen/_1sdp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ElevatedButtonWhite" parent="">
+        <item name="colorContainer">@color/white</item>
+        <item name="colorOnContainer">@color/smoky_black</item>
+    </style>
+
+    <style name="Widget.App.FilledButtonWhite" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FilledButtonWhite</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FilledButtonWhite" parent="">
+        <item name="colorContainer">@color/white</item>
+        <item name="colorOnContainer">@color/smoky_black</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">@dimen/_4sdp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton" parent="">
+        <item name="colorContainer">@color/primary_color_celestial_blue</item>
+        <item name="colorOnContainer">@color/white</item>
+        <item name="android:outlineAmbientShadowColor" tools:targetApi="p">@color/primary_color_celestial_blue</item>
+        <item name="android:outlineSpotShadowColor" tools:targetApi="p">@color/primary_color_celestial_blue</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButtonLayer" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButtonLayer</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.MediumComponentLayer</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">@dimen/_4sdp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButtonLayer" parent="">
+        <item name="colorContainer">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnContainer">@color/primary_color_jordy_blue</item>
+        <item name="android:outlineAmbientShadowColor" tools:targetApi="p">@color/black_alpha10</item>
+        <item name="android:outlineSpotShadowColor" tools:targetApi="p">@color/black_alpha10</item>
+    </style>
+
+    <style name="ShapeAppearance.App.MediumComponentLayer" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButtonShare" parent="Widget.Material3.FloatingActionButton.Primary">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButtonShare</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.App.MediumComponentLayer</item>
+        <item name="borderWidth">0dp</item>
+        <item name="elevation">@dimen/_4sdp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButtonShare" parent="">
+        <item name="colorContainer">@color/white</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnContainer">@color/primary_color_sky_blue</item>
+        <item name="android:outlineAmbientShadowColor" tools:targetApi="p">@color/black_alpha10</item>
+        <item name="android:outlineSpotShadowColor" tools:targetApi="p">@color/black_alpha10</item>
+    </style>
+
+
+    <style name="BottomSheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/bottomSheetStyleWrapper</item>
+<!--        <item name="android:windowSoftInputMode">adjustResize</item>-->
+    </style>
+
+    <style name="bottomSheetStyleWrapper" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+<!--        <item name="android:windowSoftInputMode">adjustResize</item>-->
+    </style>
+
+    <style name="ImageCircleTheme">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+    <style name="ImageRoundedTheme30dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_24sdp</item>
+    </style>
+
+    <style name="ImageRoundedTheme10dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_8sdp</item>
+    </style>
+
+    <style name="ImageRoundedTheme5dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_5sdp</item>
+    </style>
+
+    <style name="ImageThemeRounded13dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_10sdp</item>
+    </style>
+
+    <style name="ImageThemeRounded16dp">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/_13sdp</item>
+    </style>
+
+    <style name="Widget.App.Switch" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.MySwitch</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MySwitch" parent="">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurfaceVariant">@color/secondary300</item>
+        <item name="colorOutline">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceContainer">@color/white</item>
+        <item name="colorPrimaryContainer">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
+    </style>
+
+    <style name="App_EditTextStyle_Auth" parent="@android:style/Widget.EditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/secondary800</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="App_EditTextStyle_Profile" parent="@android:style/Widget.EditText">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/secondary800</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="App_MaterialTextStyle_Error" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/error500</item>
+        <item name="android:fontFamily">@font/urbanist_medium</item>
+        <item name="android:textSize">@dimen/_9ssp</item>
+    </style>
+
+    <style name="App_Auth_MaterialTextStyle_Field_Titles" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/smoky_black</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+    </style>
+
+    <style name="App_Profile_MaterialTextStyle_Field_Titles" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/smoky_black</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+    </style>
+
+    <style name="App_Profile_MaterialTextStyle_Field_Menu" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textColor">@color/secondary400</item>
+        <item name="android:fontFamily">@font/urbanist_medium</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:padding">@dimen/_16sdp</item>
+    </style>
+    <style name="Widget.App.Switch2" parent="Widget.Material3.CompoundButton.MaterialSwitch">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.MySwitch2</item>
+    </style>
+    <style name="ThemeOverlay.App.MySwitch2" parent="">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurfaceVariant">@color/secondary400</item>
+        <item name="colorOutline">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorSurfaceContainer">@color/white</item>
+        <item name="colorPrimaryContainer">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/white</item>
+    </style>
+
+    <style name="Widget.App.MySlider" parent="Widget.Material3.Slider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.MySlider</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MySlider" parent="">
+        <item name="colorSurfaceVariant">@color/information300</item>
+        <item name="colorPrimary">@color/white</item>
+    </style>
+
+    <style name="Widget.App.MySliderOpacity" parent="Widget.Material3.Slider">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.MySliderOpacity</item>
+        <item name="thumbElevation">0dp</item>
+        <item name="haloColor">@android:color/transparent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.MySliderOpacity" parent="">
+        <item name="colorSurfaceVariant">@color/secondary300</item>
+        <item name="colorPrimary">@color/primary_color_sky_blue</item>
+        <item name="thumbStrokeColor">@color/white</item>
+        <item name="thumbStrokeWidth">@dimen/_2sdp</item>
+    </style>
+
+    <style name="Widget.App.MySeekbar" parent="Widget.AppCompat.SeekBar">
+        <item name="android:progressBackgroundTint">@color/information300</item>
+        <item name="android:progressTint">@color/white</item>
+    </style>
+
+
+    <style name="Widget.App.ProfileSaveButton" parent="Widget.Material3.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ProfileSaveButton</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="rippleColor">@color/text_button_ripple</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ProfileSaveButton" parent="">
+        <item name="android:textColor">@color/primary_color_celestial_blue</item>
+        <item name="android:fontFamily">@font/urbanist_medium</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
+        <item name="colorContainer">@android:color/transparent</item>
+        <item name="colorOnContainer">@color/primary_color_celestial_blue</item>
+    </style>
+
+    <style name="Widget.App.ProfileBackButton" parent="Widget.Material3.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ProfileBackButton</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="rippleColor">@color/text_button_ripple</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ProfileBackButton" parent="">
+        <item name="android:textColor">@color/information300</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="colorContainer">@android:color/transparent</item>
+        <item name="colorOnContainer">@color/information300</item>
+    </style>
+
+    <style name="Widget.App.BlackBackButton" parent="Widget.Material3.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BlackBackButton</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="rippleColor">@color/text_button_ripple</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BlackBackButton" parent="">
+        <item name="android:textColor">@color/secondary800</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="colorContainer">@android:color/transparent</item>
+        <item name="colorOnContainer">@color/secondary800</item>
+    </style>
+
+
+    <style name="Widget.App.SilverBackButton" parent="Widget.Material3.Button.TextButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.SilverBackButton</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="rippleColor">@color/text_button_ripple</item>
+    </style>
+
+    <style name="ThemeOverlay.App.SilverBackButton" parent="">
+        <item name="android:textColor">@color/roman_silver</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="colorContainer">@android:color/transparent</item>
+        <item name="colorOnContainer">@color/roman_silver</item>
+    </style>
+
+    <!-- Progress bar style-->
+    <style name="progressBarBlue" parent="@style/Theme.AppCompat">
+        <item name="colorAccent">@color/color_primary</item>
+    </style>
+
+    <style name="App_TextInputLayout_Material" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="materialThemeOverlay">@style/textField_cursor_color</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="android:textColorHint">@color/secondary400</item>
+        <item name="hintTextColor">@color/secondary400</item>
+        <item name="boxStrokeColor">@color/selector_stroke_color</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="boxStrokeErrorColor">@color/error600</item>
+        <item name="errorTextColor">@color/error600</item>
+        <item name="errorIconDrawable">@null</item>
+    </style>
+
+    <style name="textField_cursor_color">
+        <item name="colorControlActivated">@color/secondary500</item>
+    </style>
+<!--    android:theme="@style/textField_cursor_color"-->
+<!--    <style name="App_TextInputEditText_Material" parent="Widget.Material3.TextInputLayout.FilledBox">-->
+    <style name="App_TextInputEditText_Material" parent="Widget.Material3.TextInputEditText.FilledBox">
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="hintTextColor">@color/secondary400</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">0dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/secondary400</item>
+        <item name="android:textColor">@color/secondary700</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+    </style>
+
+    <style name="App_RadioButton.Theme" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButton</item>
+<!--        <item name="android:textColor">@color/secondary400</item>-->
+        <item name="android:textColor">@color/radiobuttonstate</item>
+        <item name="android:fontFamily">@font/urbanist_medium</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButton" parent="">
+        <item name="colorOnSurface">@color/secondary300</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnSurfaceVariant">@color/secondary300</item>
+    </style>
+
+    <style name="App_RadioButton.ThemeFilter" parent="Widget.Material3.CompoundButton.RadioButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.RadioButtonFilter</item>
+        <!--        <item name="android:textColor">@color/secondary400</item>-->
+        <item name="android:textColor">@color/radiofilterbuttonstate</item>
+        <item name="android:fontFamily">@font/urbanist_regular</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.RadioButtonFilter" parent="">
+        <item name="colorOnSurface">@color/radio_unselect_filter</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorOnSurfaceVariant">@color/radio_unselect_filter</item>
+    </style>
+
+
+    <style name="Widget.App.SaveButtonLocation" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.SaveButtonLocation</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.SaveButtonLocation" parent="">
+        <item name="colorContainer">@color/color_primary</item>
+        <item name="colorOnContainer">@color/white</item>
+<!--        <item name="colorContainer">@color/primary_color_jordy_blue_alpha36</item>-->
+<!--        <item name="colorOnContainer">@color/color_primary</item>-->
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:fontFamily">@font/urbanist_semi_bold</item>
+    </style>
+
+    <style name="Widget.App.SaveButtonWhite" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.SaveButtonWhite</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.SaveButtonWhite" parent="">
+        <item name="colorContainer">@color/white</item>
+        <item name="colorOnContainer">@color/smoky_black</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:fontFamily">@font/urbanist_bold</item>
+    </style>
+
+    <style name="Widget.App.SaveButtonRed" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.SaveButtonRed</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.SaveButtonRed" parent="">
+        <item name="colorContainer">@color/error500</item>
+        <item name="colorOnContainer">@color/white</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:fontFamily">@font/urbanist_bold</item>
+    </style>
+
+    <style name="MyMaterialTimePickerTheme" parent="Widget.Material3.MaterialTimePicker">
+        <item name="materialTimePickerTheme">@style/My_MaterialTimePickerTheme</item>
+    </style>
+
+    <style name="My_MaterialTimePickerTheme" parent="@style/ThemeOverlay.MaterialComponents.TimePicker">
+        <item name="colorOnPrimary">@color/secondary800</item>
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryContainer">@color/primary_color_jordy_blue</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorOnSurface">@color/secondary800</item>
+        <item name="colorSurface">@color/information100</item>
+        <item name="colorOnSurfaceVariant">@color/secondary500</item>
+        <item name="colorOutline">@color/primary_color_sky_blue</item>
+        <item name="colorSurfaceVariant">@color/primary_color_sky_blue</item>
+        <item name="colorTertiaryContainer">@color/primary_color_jordy_blue</item>
+        <item name="colorOnTertiaryContainer">@color/color_primary</item>
+    </style>
+
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:textColor">@color/secondary800</item>  // you can change the color of the yearPiker dialog
+        <item name="android:textColorPrimary">@color/secondary400</item> // you can change the color of the yearPiker dialog
+    </style>
+
+
+    <style name="Widget.App.SaveButtonLocationSmall" parent="Widget.Material3.Button.ElevatedButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.SaveButtonLocationSmall</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.SaveButtonLocationSmall" parent="">
+        <item name="colorContainer">@color/color_primary</item>
+        <item name="colorOnContainer">@color/white</item>
+<!--        <item name="colorContainer">@color/primary_color_jordy_blue_alpha36</item>-->
+<!--        <item name="colorOnContainer">@color/color_primary</item>-->
+        <item name="android:textSize">@dimen/_9ssp</item>
+        <item name="android:fontFamily">@font/urbanist_semi_bold</item>
+    </style>
+
+    <style name="Widget.App.ElevatedButtonIcon" parent="Widget.Material3.Button.ElevatedButton.Icon">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.ElevatedButtonIcon</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:translationZ">0dp</item>
+    </style>
+
+    <style name="ThemeOverlay.App.ElevatedButtonIcon" parent="">
+        <item name="colorContainer">@color/color_primary</item>
+        <item name="colorOnContainer">@color/white</item>
+<!--        <item name="colorContainer">@color/primary_color_jordy_blue_alpha36</item>-->
+<!--        <item name="colorOnContainer">@color/color_primary</item>-->
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:fontFamily">@font/urbanist_semi_bold</item>
+        <item name="iconGravity">textStart</item>
+    </style>
+</resources>

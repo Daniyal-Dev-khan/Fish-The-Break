@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:src="@drawable/measure_dot"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv1"
+            android:layout_width="@dimen/_12sdp"
+            android:layout_height="@dimen/_12sdp"
+            android:src="@drawable/measure_dot"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvName1"/>
+
+        <ImageView
+            android:id="@+id/ivDotedLine"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_doted_line"
+            app:layout_constraintBottom_toTopOf="@id/tvName1"
+            app:layout_constraintStart_toStartOf="@id/iv1"
+            app:layout_constraintEnd_toEndOf="@id/iv1"
+            app:layout_constraintTop_toBottomOf="@id/iv"/>
+
+        <ImageView
+            android:id="@+id/ivDotedLineTop"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_doted_line"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/tvName1"
+            app:layout_constraintStart_toStartOf="@id/iv1"
+            app:layout_constraintEnd_toEndOf="@id/iv1"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/ivDotedLineBottom"
+            android:layout_width="@dimen/_6sdp"
+            android:layout_height="0dp"
+            android:src="@drawable/ic_doted_line_small"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv1"
+            app:layout_constraintEnd_toEndOf="@id/iv1"
+            app:layout_constraintTop_toBottomOf="@id/tvName1"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Location to A (12km)"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/secondary600"
+            android:layout_marginStart="@dimen/_4sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Location to A (12km)"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/secondary600"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvName"
+            app:layout_constraintStart_toEndOf="@id/iv"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLat1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Lat: 41* 24.11"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/primary_color_sky_blue"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:singleLine="true"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="@id/tvName"
+            app:layout_constraintEnd_toStartOf="@id/tvLang1"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLang1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Lan: -67* 40.43"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_8ssp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:singleLine="true"
+            android:textColor="@color/primary_color_sky_blue"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toEndOf="@id/tvLat1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDistance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="12km"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/secondary600"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_goneMarginTop="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvLat1"
+            app:layout_constraintStart_toEndOf="@id/iv1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Location to A (12km)"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/secondary600"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvDistance"
+            app:layout_constraintStart_toEndOf="@id/iv1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Location to A (12km)"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/secondary600"
+            android:layout_marginStart="@dimen/_4sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvName1"
+            app:layout_constraintStart_toEndOf="@id/iv1"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLat2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Lat: 41* 24.11"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_8ssp"
+            android:textColor="@color/primary_color_sky_blue"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:singleLine="true"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle1"
+            app:layout_constraintStart_toStartOf="@id/tvName1"
+            app:layout_constraintEnd_toStartOf="@id/tvLang2"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvLang2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Lan: -67* 40.43"
+            app:fontFamily="@font/urbanist_semi_bold"
+            android:textSize="@dimen/_8ssp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textColor="@color/primary_color_sky_blue"
+            android:singleLine="true"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle1"
+            app:layout_constraintStart_toEndOf="@id/tvLat2"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

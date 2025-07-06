@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/blankEmptyFragment">
+    <fragment
+        android:id="@+id/applyLayersFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.home.ApplyLayersFragment"
+        android:label="ApplyLayersFragment" >
+        <action
+            android:id="@+id/action_applyLayersFragment_to_singleResourceFragment"
+            app:destination="@id/singleResourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchLocationFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.home.SearchLocationFragment"
+        android:label="SearchLocationFragment" >
+        <action
+            android:id="@+id/action_searchLocationFragment_to_searchLatLangFragment"
+            app:destination="@id/searchLatLangFragment" />
+        <argument
+            android:name="isFromRoute"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.EditProfileFragment"
+        android:label="EditProfileFragment" />
+    <fragment
+        android:id="@+id/updatePasswordFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.UpdatePasswordFragment"
+        android:label="UpdatePasswordFragment" />
+    <fragment
+        android:id="@+id/changeEmailFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.ChangeEmailFragment"
+        android:label="ChangeEmailFragment" >
+        <action
+            android:id="@+id/action_changeEmailFragment_to_verifyEmailOtpFragment"
+            app:destination="@id/verifyEmailOtpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/preferencesFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.PreferencesFragment"
+        android:label="PreferencesFragment" >
+        <action
+            android:id="@+id/action_preferencesFragment_to_boatRangeFragment"
+            app:destination="@id/boatRangeFragment" />
+        <action
+            android:id="@+id/action_preferencesFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/boatRangeFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.BoatRangeFragment"
+        android:label="BoatRangeFragment" >
+        <argument
+            android:name="showBoatRangeControls"
+            app:argType="boolean" />
+        <argument
+            android:name="saveBoatRangeToServer"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/offlineMapsFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.OfflineMapsFragment"
+        android:label="OfflineMapsFragment" >
+        <action
+            android:id="@+id/action_offlineMapsFragment_to_generateOfflineMapFragment"
+            app:destination="@id/generateOfflineMapFragment" />
+        <action
+            android:id="@+id/action_offlineMapsFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/generateOfflineMapFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.GenerateOfflineMapFragment"
+        android:label="GenerateOfflineMapFragment" >
+        <argument
+            android:name="mapPath"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/verifyEmailOtpFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.VerifyEmailOtpFragment"
+        android:label="fragment_verify_email_otp"
+        tools:layout="@layout/fragment_verify_email_otp" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/articlesFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.ArticlesFragment"
+        android:label="ArticlesFragment" >
+        <action
+            android:id="@+id/action_articlesFragment_to_articleListFragment"
+            app:destination="@id/articleListFragment" />
+        <action
+            android:id="@+id/action_articlesFragment_to_singleResourceFragment"
+            app:destination="@id/singleResourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleListFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.ArticleListFragment"
+        android:label="ArticleListFragment" >
+        <argument
+            android:name="articleId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_articleListFragment_to_singleResourceFragment"
+            app:destination="@id/singleResourceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleResourceFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.SingleResourceFragment"
+        android:label="SingleResourceFragment" >
+        <argument
+            android:name="webUrl"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/myVesselFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.MyVesselFragment"
+        android:label="MyVesselFragment" >
+        <action
+            android:id="@+id/action_myVesselFragment_to_boatRangeFragment"
+            app:destination="@id/boatRangeFragment" />
+        <action
+            android:id="@+id/action_myVesselFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupDetailsFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.group.GroupDetailsFragment"
+        android:label="fragment_group_details"
+        tools:layout="@layout/fragment_group_details" >
+        <argument
+            android:name="chatData"
+            app:argType="com.cp.fishthebreak.models.group.ChatListData" />
+        <action
+            android:id="@+id/action_groupDetailsFragment_to_groupInfoFragment"
+            app:destination="@id/groupInfoFragment" />
+        <action
+            android:id="@+id/action_groupDetailsFragment_to_commonMapFragment"
+            app:destination="@id/commonMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/groupInfoFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.group.GroupInfoFragment"
+        android:label="fragment_group_info"
+        tools:layout="@layout/fragment_group_info" >
+        <argument
+            android:name="data"
+            app:argType="com.cp.fishthebreak.models.group.ChatListData" />
+        <action
+            android:id="@+id/action_groupInfoFragment_to_deleteGroupFragment"
+            app:destination="@id/deleteGroupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deleteGroupFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.group.DeleteGroupFragment"
+        android:label="DeleteGroupFragment" >
+        <argument
+            android:name="groupData"
+            app:argType="com.cp.fishthebreak.models.group.ChatListData" />
+    </fragment>
+    <fragment
+        android:id="@+id/commonMapFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.map.CommonMapFragment"
+        android:label="CommonMapFragment" >
+        <argument
+            android:name="data"
+            app:argType="com.cp.fishthebreak.utils.MapUiData" />
+    </fragment>
+    <fragment
+        android:id="@+id/blankEmptyFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.BlankEmptyFragment"
+        android:label="fragment_blank_empty"
+        tools:layout="@layout/fragment_blank_empty" />
+    <fragment
+        android:id="@+id/subscriptionFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.SubscriptionFragment"
+        android:label="SubscriptionFragment" />
+    <fragment
+        android:id="@+id/viewSubscriptionsFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.profile.ViewSubscriptionsFragment"
+        android:label="ViewSubscriptionsFragment" >
+        <action
+            android:id="@+id/action_viewSubscriptionsFragment_to_subscriptionFragment"
+            app:destination="@id/subscriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchLatLangFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.home.SearchLatLangFragment"
+        android:label="SearchLatLangFragment" />
+    <fragment
+        android:id="@+id/rejectionReasonFragment"
+        android:name="com.cp.fishthebreak.screens.fragments.group.RejectionReasonFragment"
+        android:label="RejectionReasonFragment" />
+</navigation>

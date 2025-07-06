@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.cp.fishthebreak.models.points.SaveFishLogData" />
+
+        <variable
+            name="listener"
+            type="com.cp.fishthebreak.adapters.routes.RouteClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp">
+
+        <ImageView
+            android:id="@+id/ivSelect"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:src="@{data.selected? @drawable/ic_selected_blue_tick:@drawable/ic_un_selected_blue_tick, default=@drawable/ic_un_selected_blue_tick}"
+            android:padding="@dimen/_2sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guide1" />
+<!--        android:onClick="@{(view)->listener.onSelectFishLog(data)}"-->
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent="0.55"
+            android:orientation="horizontal"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:paddingBottom="@dimen/_13sdp"
+            android:background="@drawable/bg_route_locations"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivSelect"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_97sdp"
+                android:layout_margin="@dimen/_6sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_dummy_location"
+                app:layout_constraintTop_toTopOf="parent"
+                app:setImage="@{data.base_url+data.image}"
+                app:shapeAppearanceOverlay="@style/ImageThemeRounded16dp" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="@{data.fish_name}"
+                android:textColor="@color/secondary700"
+                android:textSize="@dimen/_10ssp"
+                app:fontFamily="@font/urbanist_semi_bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginEnd="@dimen/_31sdp"
+                android:text="@{data.description}"
+                android:textColor="@color/secondary400"
+                android:textSize="@dimen/_8ssp"
+                app:fontFamily="@font/urbanist_medium"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_36sdp"
+                android:text="@{@string/generic_lat(data.latitudeFormat)}"
+                android:textColor="@color/primary_color_sky_blue"
+                android:textSize="@dimen/_8ssp"
+                app:fontFamily="@font/urbanist_medium"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvLong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_11sdp"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:layout_marginEnd="@dimen/_36sdp"
+                android:text="@{@string/generic_long(data.longitudeFormat)}"
+                android:textColor="@color/primary_color_sky_blue"
+                android:textSize="@dimen/_8ssp"
+                app:fontFamily="@font/urbanist_medium"
+                app:layout_constraintStart_toEndOf="@id/tvLat"
+                app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

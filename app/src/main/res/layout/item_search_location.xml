@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_13sdp">
+
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="@dimen/_22sdp"
+            android:layout_height="@dimen/_22sdp"
+            android:visibility="gone"
+            android:src="@drawable/ic_history"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="New Jersey Wreck"
+            android:fontFamily="@font/urbanist_regular"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/roman_silver"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="38F | 1-2 ft surf | 20mph winds | 3.4 miles away "
+            android:fontFamily="@font/urbanist_regular"
+            android:textSize="@dimen/_11ssp"
+            android:visibility="gone"
+            android:textColor="@color/secondary800"
+            android:layout_marginStart="@dimen/_9sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv"
+            app:layout_constraintTop_toBottomOf="@id/tvName"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:background="@color/bright_gray_divider"
+            android:layout_marginTop="@dimen/_13sdp"
+            app:layout_constraintTop_toBottomOf="@id/tvAddress"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

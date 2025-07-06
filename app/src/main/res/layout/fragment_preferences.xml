@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.cp.fishthebreak.viewModels.profile.preference.PreferenceViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".screens.fragments.profile.PreferencesFragment">
+
+        <Button
+            android:id="@+id/backButton"
+            style="@style/Widget.App.ProfileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_14sdp"
+            app:icon="@drawable/ic_back_primary"
+            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_top_action_bar"
+            android:fontFamily="@font/urbanist_semi_bold"
+            android:text="@string/preferences"
+            android:textColor="@color/secondary700"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_18sdp"
+            app:dividerColor="@color/secondary200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_14sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:background="@drawable/bg_profile_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvBoatRange"
+                style="@style/App_Profile_MaterialTextStyle_Field_Menu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/arrow_right"
+                android:drawablePadding="@dimen/_8sdp"
+                android:text="@string/display_boat_range"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/dividerBoatRange"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:visibility="gone"
+                app:dividerColor="@color/secondary400_alpha28"
+                app:layout_constraintTop_toBottomOf="@id/tvBoatRange" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvVessels"
+                style="@style/App_Profile_MaterialTextStyle_Field_Menu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/show_other_vessels"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dividerBoatRange" />
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/btnLayerOnOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Switch2"
+                android:background="@android:color/transparent"
+                android:layout_marginEnd="@dimen/_11sdp"
+                android:checked="@{model.userResponse.user_configuration.other_vessels == 1 ? true:false}"
+                android:onCheckedChanged="@{(button, bool)-> model.toggleVessel()}"
+                app:layout_constraintEnd_toEndOf="@id/tvVessels"
+                app:layout_constraintTop_toTopOf="@id/tvVessels"
+                app:layout_constraintBottom_toBottomOf="@id/tvVessels"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/loaderLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <include
+                layout="@layout/loader_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
